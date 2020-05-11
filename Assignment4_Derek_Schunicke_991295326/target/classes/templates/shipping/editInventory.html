@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/tableStyling.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/tableResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchStyle.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<title>Edit Inventory</title>
+		
+	</head>
+	
+	<body>
+	
+		<form th:action="@{/modifyItem}" th:object=${item}>
+			<input type="hidden" name="page" th:value="${page}">
+		    <input type="hidden" th:field="*{id}"><br/>
+			Description: <input type="text" th:field="*{item}"><br/><br/>
+			Weight: <input type="number" step="1" th:field="*{weight}"><br/><br/>
+			Price: $<input type="number" step="0.01" th:field="*{price}"><br/><br/>
+			Inventory: <input type="number" th:field="*{inventory}" step="1" min="0"><br/><br/>
+			
+			<input type="SUBMIT" value="Edit"/><br/><br/>
+	
+		</form>
+	
+	</body>
+
+</html>

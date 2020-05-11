@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+#headerBar{
+	position: fixed;
+  	width: 100%;
+  	top: -5px;
+  	left: -3px;
+  	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas: 
+	"home title title logout" 
+	"menu1 menu2 menu3 menu4";
+  	border: 3px solid black;
+  	z-index: 1;
+  	background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(178, 178, 178, 1), 
+  										rgba(255, 255, 255, 1), rgba(178, 178, 178, 1));
+}
+
+#home{grid-area:home;margin:auto;}
+#logout{grid-area:logout;margin:auto;}
+#title{grid-area:title;}
+#menu1{grid-area:menu1;}
+#menu2{grid-area:menu2;}
+#menu3{grid-area:menu3;}
+#menu4{grid-area:menu4;}
+
+a:hover {
+  color: red;
+}

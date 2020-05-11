@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/headerBarCss.css}">  
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/tableStyling.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchStyle.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/editSalesStyle.css}">
+		<title>Edit Order Item</title>
+		
+	</head>
+	
+	<body>
+	
+		<div id="headerBar">
+			<h1 id="title">Sales - Edit Order Item</h1>
+			<div id="home"><a th:href="@{/salesHome}">Sales Home</a></div>
+			<div id="logout"><a th:href="@{/logout}">Log Out</a></div>
+			<div id="menu1"><a th:href="@{/viewSalesInventory}">View Inventory</a></div>
+			<div id="menu2"><a th:href="@{/viewSalesOrders}">View Sales Orders</a></div>
+			<div id="menu3"><a th:href="@{/addOrder}">Create Sales Order</a></div>
+			<div id="menu4"><a th:href="@{/searchSales}">Search Sales Orders</a></div>
+			<div id="menu5"><a th:href="@{/printExcel}">Print Order to Excel</a></div>
+		</div>
+	
+		<form th:action="@{/modifyOrder}" th:object=${order}>
+		        <input type="hidden" name="page" th:value="${page}">
+		        <input type="hidden" th:field="*{id}"><br/>
+		        <input type="hidden" th:field="*{orderId}">
+			ID: <input type="text" th:field="*{id}" disabled><br/><br/>
+			Order ID: <input type="text" th:field="*{orderId}" disabled><br/><br/>
+			Customer Name: <input type="text" th:field="*{custName}"><br/><br/>
+			Customer Email: <input type="text" th:field="*{custEmail}"><br/><br/>
+			Sales Name: <input type="text" th:field="*{salesName}"><br/><br/>
+			Item: <select th:field="*{item}">
+						<option th:each="i : ${items}" 
+						th:default="i.item == item"
+			        	th:value="${i.item}" th:text="${i.item}">
+			      </select><br/><br/>
+			Item Quantity: <input type="number" min="1" max="200" th:field="*{itemQty}"><br/><br/>
+			Ship Date: <input type="date" th:field="*{shipDate}"><br/><br/>
+		
+			<input type="SUBMIT" value="Edit"/><br/><br/>
+	
+		</form>
+	
+	</body>
+
+</html>

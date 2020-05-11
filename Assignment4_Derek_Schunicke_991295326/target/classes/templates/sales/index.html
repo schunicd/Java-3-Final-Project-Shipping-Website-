@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/headerBarCss.css}">
+		<title>Sales Home Page</title>
+	
+	</head>
+	
+	<body>
+	
+		<div id="headerBar">
+			
+			<h1 id="title">Welcome to the Sales Department</h1>
+			<div id="home"></div>
+			<div id="logout"><a th:href="@{/logout}">Log Out</a></div>
+			<div id="menu1"><a th:href="@{/viewSalesInventory}">View Inventory</a></div>
+			<div id="menu2"><a th:href="@{/viewSalesOrders}">View Sales Orders</a></div>
+			<div id="menu3"><a th:href="@{/addOrder}">Create Sales Order</a></div>
+			<div id="menu4"><a th:href="@{/searchSales}">Search Sales Orders</a></div>
+			<div id="menu5"><a th:href="@{/printExcel}">Print Order to Excel</a></div>
+		</div>
+	
+	</body>
+	
+</html>

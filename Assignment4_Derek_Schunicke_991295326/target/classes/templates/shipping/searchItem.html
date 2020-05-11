@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/ShippingHeader.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/tableStyling.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/tableResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/searchStyle.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/searchResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<title>Search Items</title>
+		
+	</head>
+	
+	<body>
+		
+		<div id="headerBar">
+			<h1 id="title">Shipping/Receiving - Search Items</h1>
+			<div id="home"><a th:href="@{/shippingHome}">Shipping/Receiving Home</a></div>
+			<div id="logout"><a th:href="@{/logout}">Log Out</a></div>
+			<div id="menu1"><a th:href="@{/viewInventory}">View Inventory</a></div>
+			<div id="menu2"><a th:href="@{/addItem}">Add a New Item</a></div>
+			<div id="menu3"><a th:href="@{/searchItems}">Search Items</a></div>
+			<div id="menu4"><a th:href="@{/print}">Print Shipping Manifest</a></div>
+		</div>
+	
+		<form action="/searchAllItems" method="GET">
+			<br/>
+			Item ID: <input type="number" name="id" placeholder="Item ID"/><br/><br/>
+			Item Description: <input type="text" name="item" placeholder="Item Description"/><br/><br/>
+			Minimum Quantity: <input type="number" name="minQty"/><br/><br/>
+			Maximum Quantity: <input type="number" name="maxQty"/><br/><br/>
+			
+			<input type="SUBMIT" value="Search"/><br/><br/>
+		
+		</form>
+	
+		<table id="moveTable">
+			
+	        	<tr th:if="${items}">
+	        		<th>ID</th>
+		        	<th>Item Description</th>
+		        	<th>Unit Weight (lbs)</th>
+		        	<th>Unit Price</th>
+		        	<th>Inventory Quantity</th>
+		        	
+		        </tr>
+		        
+		        <tr th:each="item : ${items}">
+		        
+		        	<td th:text="${item.id}"></td>
+		        	<td th:text="${item.item}"></td>
+		        	<td th:text="${item.weight}"></td>
+		        	<td th:text="'$' + ${item.price}"></td>
+		        	<td th:text="${item.inventory}"></td> 
+		        	<td><a th:href="@{/editItem/{id}(id=${item.id})} + '?page=search'">Edit</a></td>
+		        	<td><a th:href="@{/deleteItem/{id}(id=${item.id})} + '?page=search'">Delete</a></td>
+		        	
+		        </tr>
+	
+		</table>
+	
+	</body>
+	
+</html>

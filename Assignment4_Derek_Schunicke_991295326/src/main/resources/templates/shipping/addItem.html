@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/ShippingHeader.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/searchStyle.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/searchResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<title>Add New Item</title>
+		
+	</head>
+	
+	<body>
+	
+		<div id="headerBar">
+			<h1 id="title">Shipping/Receiving - Add New Item</h1>
+			<div id="home"><a th:href="@{/shippingHome}">Shipping/Receiving Home</a></div>
+			<div id="logout"><a th:href="@{/logout}">Log Out</a></div>
+			<div id="menu1"><a th:href="@{/viewInventory}">View Inventory</a></div>
+			<div id="menu2"><a th:href="@{/addItem}">Add a New Item</a></div>
+			<div id="menu3"><a th:href="@{/searchItems}">Search Items</a></div>
+			<div id="menu4"><a th:href="@{/print}">Print Shipping Manifest</a></div>
+		</div>
+		
+		<form th:action="@{/addNewItem}" method="GET">
+			<br/>
+			Description: <input type="text" name="item" placeholder="Item Description"><br/><br/>
+			Item Quantity: <input type="number" name="quantity"><br/><br/>
+			Price: $<input type="number" name="price"><br/><br/>
+			Weight: <input type="number" name="weight"><br/><br/>
+			
+			<input type="SUBMIT" value="Add to Inventory"/><br/><br/>
+	
+		</form>
+
+	</body>
+	
+</html>

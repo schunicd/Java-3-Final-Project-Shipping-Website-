@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+#success{
+	color: rgb(67, 208, 47);
+	font-weight: bold;
+	}
+
+#failure{
+	color: rgb(255, 0, 0);
+	font-weight: bold;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{_css/bodyBackground.css}">
+		<title>Welcome!</title>
+		
+		
+	</head>
+	
+	<body>
+	
+		<h1>Welcome to the Sales & Shipping Application</h1>
+		<h3>Click below to log in to Shipping/Receiving</h3>
+		Shipping/Receiving <a th:href="@{/shippingHome}">Login</a>
+		<h3>Click below to log in to Sales</h3>
+		Sales <a th:href="@{/salesHome}">Login</a>
+		<h3>Don't have an account? Click below to register!</h3>
+		Go to registration <a th:href="@{/register}">Register</a><br/><br/><br/><br/><br/><br/>
+		
+		<form id="dummyItems" action="/generateItems">
+			<input type="SUBMIT" value="Generate Dummy Records">
+		</form>
+		
+	</body>
+	
+</html>

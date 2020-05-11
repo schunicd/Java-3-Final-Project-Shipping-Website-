@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/bodyBackground.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/headerBarCss.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/tableStyling.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/tableResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchStyle.css}" media="screen and 
+		(min-width: 1262px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/searchResize.css}" media="screen and 
+		(max-width: 1261px)">
+		<link rel="stylesheet" type="text/css" th:href="@{/_css/editSalesStyle.css}">
+		<title>New Sales Order</title>
+		
+	</head>
+	
+	<body>
+	
+		<div id="headerBar">
+			<h1 id="title">Sales - Create New Order</h1>
+			<div id="home"><a th:href="@{/salesHome}">Sales Home</a></div>
+			<div id="logout"><a th:href="@{/logout}">Log Out</a></div>
+			<div id="menu1"><a th:href="@{/viewSalesInventory}">View Inventory</a></div>
+			<div id="menu2"><a th:href="@{/viewSalesOrders}">View Sales Orders</a></div>
+			<div id="menu3"><a th:href="@{/addOrder}">Create Sales Order</a></div>
+			<div id="menu4"><a th:href="@{/searchSales}">Search Sales Orders</a></div>
+			<div id="menu5"><a th:href="@{/printExcel}">Print Order to Excel</a></div>
+		</div>
+		
+		<form th:action="@{/addSalesItem}" method="GET">
+		        		<input type="hidden" name="orderId" th:value="${orderId}">
+		        		<input type="hidden" name="salesName" th:value="${salesName}"><br/>
+			Order ID: <input type="text" th:value="${orderId}" disabled><br/><br/>
+			Customer Name: <input type="text" name="custName" th:value="${custName}"><br/><br/>
+			Customer Email: <input type="text" name="custEmail" th:value="${custEmail}"><br/><br/>
+			Sales Name: <input type="text" th:value="${salesName}" disabled><br/><br/>
+			Item: <select name="item" th:value="${item}">
+						<option th:each="i : ${items}"
+						th:if="${i.inventory} > 0"
+			        	th:value="${i.item}" th:text="${i.item}">
+			      </select><br/><br/>
+			      <label th:text="${invldQty}" id="failure"></label><br/>
+			Item Quantity: <input type="number" min="1" max="200"
+							name="itemQty" th:value="${itemQty}"><br/><br/>
+			Ship Date: <input type="date" name="date" th:value="${shipDate}"><br/><br/>
+			
+			<input type="SUBMIT" value="Add to Order"/><br/><br/>
+	
+		</form>
+
+		<form th:action="@{/viewSalesOrders}">
+			<br/><input type="SUBMIT" value="Complete Order"/><br/><br/>
+		</form>
+
+		<table id="moveTable" th:if="${order}">
+			
+	        	<tr>
+	        	
+	        		<th>ID</th>
+	        		<th>Order Id</th>
+	        		<th>Customer Name</th>
+		        	<th>Customer Email</th>
+		        	<th>Sales Name</th>
+		        	<th>Item Description</th>
+		        	<th>Quantity Ordered</th>
+		        	<th>Unit Weight (lbs)</th>
+		        	<th>Total Weight (lbs)</th>
+		        	<th>Unit Price</th>
+		        	<th>Total Price</th>
+		        	<th>Ship Date</th>
+		        	
+		        </tr>
+		        
+		        <tr th:each="o : ${order}">
+		        
+		        	<td th:text="${o.id}"></td>
+		        	<td th:text="${o.orderId}"></td>
+		        	<td th:text="${o.custName}"></td>
+		        	<td th:text="${o.custEmail}"></td>
+		        	<td th:text="${o.salesName}"></td>
+		        	<td th:text="${o.item}"></td>
+		        	<td th:text="${o.itemQty}"></td>
+		        	<td th:text="${o.weight}"></td>
+		        	<td th:text="${o.weight} * ${o.itemQty}"></td>
+		        	<td th:text="'$' + ${o.price}"></td>
+		        	<td th:text="'$' + ${o.price} * ${o.itemQty}"></td>
+		        	<td th:text="${o.shipDate}"></td>
+
+		        </tr>
+	
+		</table>
+
+
+	</body>
+	
+</html>
